@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Gopika ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Inter',sans-serif;
+background:linear-gradient(135deg,#0f172a,#1e293b,#020617);
+color:#d1d5db;
+overflow:hidden;
+}
+
+#hearts{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+}
+
+.container{
+position:relative;
+z-index:2;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(14px);
+padding:40px;
+border-radius:20px;
+text-align:center;
+width:90%;
+max-width:700px;
+box-shadow:0 0 60px rgba(255,255,255,0.08);
+}
+
+#typeText{
+font-family:'Playfair Display',serif;
+font-size:2.4rem;
+color:#fff;
+min-height:70px;
+letter-spacing:1px;
+}
+
+.screen{display:none;}
+.screen.active{display:block;}
+
+button{
+padding:12px 24px;
+margin-top:20px;
+border-radius:10px;
+border:none;
+font-weight:600;
+cursor:pointer;
+}
+
+.yes-btn{
+background:linear-gradient(135deg,#ff6b9a,#ff3c78);
+color:white;
+}
+
+.no-btn{
+background:transparent;
+border:1px solid rgba(255,255,255,0.4);
+color:white;
+}
+
+.gift-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+.gift-box{
+padding:18px;
+border-radius:14px;
+background:rgba(255,255,255,0.07);
+cursor:pointer;
+transition:.3s;
+}
+
+.gift-box:hover{
+transform:translateY(-5px);
+background:rgba(255,255,255,0.12);
+}
+
+.prank{
+background:linear-gradient(135deg,#ff7b7b,#ff3c6f);
+color:white;
+}
+
+.letter-content{
+margin-top:15px;
+background:rgba(255,255,255,0.06);
+padding:18px;
+border-radius:14px;
+line-height:1.7;
+max-height:300px;
+overflow-y:auto;
+}
+
+/* Cinematic Letter Animation */
+
+.letter-title{
+font-family:'Playfair Display',serif;
+color:#fff;
+animation:fadeIn 1.5s ease forwards;
+}
+
+.letter-wrapper{
+perspective:1000px;
+margin-top:20px;
+animation:zoomIn 1.5s ease forwards;
+}
+
+.animated-letter p{
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 1s ease forwards;
+}
+
+.animated-letter p:nth-child(1){animation-delay:0.5s;}
+.animated-letter p:nth-child(2){animation-delay:1.2s;}
+.animated-letter p:nth-child(3){animation-delay:2s;}
+.animated-letter p:nth-child(4){animation-delay:2.8s;}
+.animated-letter p:nth-child(5){animation-delay:3.6s;}
+.animated-letter p:nth-child(6){animation-delay:4.4s;}
+.animated-letter p:nth-child(7){animation-delay:5.2s;}
+.animated-letter p:nth-child(8){animation-delay:6s;}
+.animated-letter p:nth-child(9){animation-delay:6.8s;}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes zoomIn{
+from{transform:scale(0.9);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+.back-btn{
+background:rgba(255,255,255,0.2);
+color:white;
+}
+
+.prank-gif{
+max-width:100%;
+border-radius:14px;
+margin-top:15px;
+}
+
+a{text-decoration:none;}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="hearts"></canvas>
+
+<audio id="bgMusic" loop>
+<source src="https://image2url.com/r2/default/audio/1770797906567-d998c366-9a69-4e30-8da5-56a6d2937f9c.mp3">
+</audio>
+
+<audio id="prankSound">
+<source src="https://www.myinstants.com/media/sounds/vine-boom.mp3">
+</audio>
+
+<div class="container">
+
+<!-- START SCREEN -->
+<div id="screen1" class="screen active">
+<h1 id="typeText"></h1>
+<p>Na Dhevenalatho happy ga vundu! 😅💌</p>
+<button class="yes-btn" onclick="startCelebrate()">Open Surprises</button>
+<button id="noBtn" class="no-btn" onmouseover="moveButton()">Maybe later</button>
+</div>
+
+<!-- GIFTS -->
+<div id="screen2" class="screen">
+<h1> Na Tarupuna konni virtual gifts 😅</h1>
+<div class="gift-grid">
+<div class="gift-box" onclick="nextScreen('gift2')">✉️ Manasulo Maata</div>
+<div class="gift-box" onclick="nextScreen('gift3')">✨Virtual EXP</div>
+<div class="gift-box prank" onclick="playPrank()">🎁Special gift</div>
+<div class="gift-box" onclick="nextScreen('gift5')">💫❤️</div>
+</div>
+</div>
+
+<!-- LETTER -->
+<div id="gift2" class="screen">
+<h1 class="letter-title">For You 💖</h1>
+<div class="letter-wrapper">
+<div class="letter-content animated-letter">
+
+<p>Dear Gopika,</p>
+<p>Nenu niku first msg chesindi na 1st year lo...</p>
+<p>First time kalisinappudu ni excitement nenu marchiponu 💫</p>
+<p>Nuv na shirt bavundi annav... aa shirt ni special ga treat chesa 😌</p>
+<p>Nuv roju call chesi dhanivi... ni call ranide naku nidra pattedhe kadhu 💖</p>
+<p>Time kanna mundu mana madhyalo gap vachindi...</p>
+<p>But nuvvu natho vunna rojulu ayte nen chala happy ga vunna 🥹</p>
+<p>Manam matladukodam apesina ninnu matram life long gurtupettukunta.</p>
+<p style="font-weight:600;font-size:1.2rem;color:#ff6b9a;">Happy Birthday 💖😉</p>
+
+</div>
+</div>
+<button class="back-btn" onclick="nextScreen('screen2')">Back</button>
+</div>
+
+<!-- CAKE -->
+<div id="gift3" class="screen">
+<h1>Real ga kudaradhu ga anduke elaa</h1>
+<button class="yes-btn" onclick="window.open('https://bdaycake.com/sathish_3414','_blank')">CLICK ME!!!</button>
+<br>
+<button class="back-btn" onclick="nextScreen('screen2')">Back</button>
+</div>
+
+<!-- PRANK -->
+<div id="gift4" class="screen">
+<h1>😜</h1>
+<img src="https://media1.tenor.com/m/UjlITChkN6wAAAAC/lick-birdy-flirty.gif" class="prank-gif">
+<br>
+<button class="back-btn" onclick="nextScreen('screen2')">Back</button>
+</div>
+
+<!-- VIDEO -->
+<div id="gift5" class="screen">
+<h1>🎥 Special Video For You 💖</h1>
+<p>I made something special for you… click below to watch it 🎬✨</p>
+
+<a href="https://youtu.be/ZJB5z87EeAs?feature=shared" target="_blank">
+<button class="yes-btn" style="margin-top:25px;font-size:1.1rem;">
+💖 CLICK ME 💖
+</button>
+</a>
+
+<br>
+<button class="back-btn" onclick="nextScreen('screen2')">Back</button>
+</div>
+
+</div>
+
+<script>
+
+/* Typewriter */
+const text="Happy 20th Birthday Gopika 💖";
+let i=0;
+function typeWriter(){
+if(i<text.length){
+document.getElementById("typeText").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,70);
+}
+}
+typeWriter();
+
+/* Hearts */
+const canvas=document.getElementById("hearts");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let hearts=[];
+for(let i=0;i<40;i++){
+hearts.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*8+4,
+speed:Math.random()*0.5+0.2
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(255,105,180,0.7)";
+hearts.forEach(h=>{
+ctx.beginPath();
+ctx.arc(h.x,h.y,h.size,0,Math.PI*2);
+ctx.fill();
+h.y-=h.speed;
+if(h.y<0)h.y=canvas.height;
+});
+requestAnimationFrame(draw);
+}
+draw();
+
+/* Navigation */
+function nextScreen(id){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+
+if(id==="gift5"){
+document.getElementById("bgMusic").pause();
+confetti({particleCount:150,spread:80,origin:{y:0.6}});
+}
+
+if(id==="gift2"){
+document.getElementById("bgMusic").volume=0.3;
+confetti({particleCount:80,spread:60,origin:{y:0.6}});
+}
+}
+
+/* Celebration */
+function startCelebrate(){
+document.getElementById("bgMusic").play().catch(()=>{});
+confetti({particleCount:120,spread:70,origin:{y:0.6}});
+nextScreen('screen2');
+}
+
+/* Prank */
+function playPrank(){
+document.getElementById("prankSound").play();
+nextScreen('gift4');
+}
+
+/* Moving button */
+function moveButton(){
+const btn=document.getElementById('noBtn');
+btn.style.position='absolute';
+btn.style.left=Math.random()*300+'px';
+btn.style.top=Math.random()*200+'px';
+}
+
+</script>
+
+</body>
+</html>
